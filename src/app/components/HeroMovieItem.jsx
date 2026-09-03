@@ -1,25 +1,31 @@
 import { Play, Star } from "lucide-react";
 import React from "react";
 
-export const HeroMovieItem = ({ image, title, rating, desc }) => {
+export const HeroMovieItem = ({ title, rating, desc }) => {
   return (
-    <div className="w-screen h-150 relative mt-7 ">
+    <div className="relative w-full h-250 overflow-hidden rounded-2xl bg-zinc-950">
       <img
         src="Feature.png"
-        layout="fill"
-        alt="hero"
-        className="z-8 w-screen "
+        alt={title || "Hero poster"}
+        className="absolute inset-0 w-full h-full object-cover z-0"
       />
-      <div className="z-2 absolute left-4 top-[30%] w-109 text-white flex flex-col gap-4 m-35">
-        <p className="text-3xl ">Now Playing</p>
-        <p className="text-5xl font-bold">{title}</p>
-        <div className="flex">
-          <Star color="yellow" fill="yellow" />
-          <p className="text-3xl">{rating}/10</p>
+
+      <div className="absolute left-6 bottom-16  px-35 py-40 z-20 flex max-w-xl flex-col gap-4 text-white">
+        <p className="text-xl font-bold">Now Playing</p>
+        <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">
+          {title}
+        </h1>
+
+        <div className="flex items-center gap-2">
+          <Star className="h-6 w-6 text-yellow-400 fill-yellow-400" />
+          <p className="text-2xl font-bold">{rating}</p>
+          <span className="text-2xl font-bold">/10</span>
         </div>
-        <p className="text-[20px]">{desc}</p>
-        <button className="bg-white text-black w-fit flex p-3 rounded-2xl text-[20px] gap-2 ">
-          <Play />
+
+        <p className="text-xl">{desc}</p>
+
+        <button className="flex items-center gap-2 bg-white text-black font-semibold px-6 py-3 rounded-2xl text-lg hover:bg-zinc-200 transition active:scale-95 w-fit mt-2">
+          <Play className="h-5 w-5 fill-current" />
           Watch Trailer
         </button>
       </div>

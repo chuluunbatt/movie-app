@@ -1,13 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { MovieCard } from "./components/MovieCard";
-import { NavigationBar } from "./components/NavigationBar";
 import { HeroMovieItem } from "./components/HeroMovieItem";
 import { useEffect } from "react";
 import { useState } from "react";
 import { MovieList } from "./components/MovieList";
-
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const options = {
@@ -38,8 +35,8 @@ export default function Home() {
   console.log(movies);
 
   return (
-    <div className="mb-40">
-      <NavigationBar />
+    <div>
+
       <HeroMovieItem
         image={"hero-mock.jpg"}
         title={"Wicked"}
@@ -49,7 +46,7 @@ export default function Home() {
         rating={"6.9"}
       />
       <MovieList />
-      <div className="grid grid-cols-5 ml-20 ">
+      <div className="grid grid-cols-5 ml-20 rounded-2xl ">
         {movies.map((movie) => {
           return (
             <MovieCard
@@ -57,10 +54,12 @@ export default function Home() {
               imgSrc={movie.poster_path}
               rating={movie.vote_average}
               title={movie.original_title}
+              id={movie.id}
             />
           );
         })}
       </div>
+
     </div>
   );
 }
