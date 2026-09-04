@@ -12,9 +12,9 @@ export const GenreMenuFunction = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2">
-          <span>Genre</span>
-          <ChevronDown className="h-4 w-4" />
+        <Button variant="outline" className="flex items-center gap-4  p-5">
+          <span className="  text-2xl ">Genre</span>
+          <ChevronDown className="h-7 w-7" />
         </Button>
       </DropdownMenuTrigger>
 
@@ -22,7 +22,8 @@ export const GenreMenuFunction = () => {
         <DropdownMenuItem>Action</DropdownMenuItem>
         <DropdownMenuItem>Comedy</DropdownMenuItem>
         <DropdownMenuItem>Drama</DropdownMenuItem>
-        <DropdownMenuItem>Sci-Fi</DropdownMenuItem>
+        <DropdownMenuItem>Fantasy</DropdownMenuItem>
+        <DropdownMenuItem>Adventure</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

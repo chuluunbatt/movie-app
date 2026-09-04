@@ -36,7 +36,6 @@ export default function Home() {
 
   return (
     <div>
-
       <HeroMovieItem
         image={"hero-mock.jpg"}
         title={"Wicked"}
@@ -46,7 +45,7 @@ export default function Home() {
         rating={"6.9"}
       />
       <MovieList />
-      <div className="grid grid-cols-5 ml-20 rounded-2xl ">
+      <div className="grid grid-cols-5 mx-30 rounded-2xl ">
         {movies.map((movie) => {
           return (
             <MovieCard
@@ -59,7 +58,6 @@ export default function Home() {
           );
         })}
       </div>
-
     </div>
   );
 }

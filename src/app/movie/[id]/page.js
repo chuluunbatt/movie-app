@@ -1,4 +1,5 @@
 "use client";
+import { SelectedMovie } from "@/app/components/SelectedMovie";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -36,66 +37,84 @@ export const page = ({ rating, title }) => {
         const detailData = await detailRes.json();
         setMovie(detailData);
         const creditsData = await creditsRes.json();
-        // setMovie(creditsData);
+
         const similarData = await similarRes.json();
         setSimilar(similarData.results);
-        // console.log("detailData", detailData);
-        console.log("creditsDate", creditsData);
-        console.log("similarData", similarData.results);
+
+        // console.log("creditsDate", creditsData);
+        console.log("SIMILAR", similarData);
       } catch (err) {
         console.error(err);
       }
     };
     fetchMovieDetail();
   }, []);
-  console.log("sim", similar);
+  console.log("SIMILAR", similar);
   return (
     <div className="mx-45 mt-15">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-5xl font-bold">Wicked</h1>
+          <h1 className="text-5xl font-bold">{movie?.original_title}</h1>
           <p className="text-2xl">{movie?.release_date}</p>
         </div>
         <div className="  text-3xl ">
           <div className="">
             <h1 className="text-xs font-bold">Rating</h1>
-            <p>{movie?.vote_average}/10</p>
+            <div className="flex">
+              {" "}
+              <img src="/star.svg " alt="od" className="size-7" />
+              <p>{movie?.vote_average}/10</p>
+            </div>
           </div>
           <h1 className="mt-2"> {title} </h1>
         </div>
       </div>
-
-      <div className="flex gap-8 mt-6">
+      <div className="flex gap-12 mt-6">
         <img
           src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
-          className="w-100 h-230"
+          className="w-150 h-220"
         />
         <img
           src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-          className="w-full h-230"
+          className="w-full h-220 "
         />
       </div>
-      <div></div>
-      <div className="text-xl mt-20">{movie?.overview}</div>
-      <div>
-        <h1>More like this</h1>
-        <button>See More</button>
+      <SelectedMovie />
+      <div className="text-xl mt-10">{movie?.overview}</div>
+      <div className="my-8">
+        <h1 className="text-3xl  font-semibold  ">
+          Director{movie?.character}
+        </h1>
+        <div className="border my-4 w-full"></div>
+        <h1 className="text-3xl font-semibold    ">
+          Writers{movie?.character}
+        </h1>
+        <div className="border my-4 w-full"></div>
+        <h1 className="text-3xl font-semibold  ">
+          Stars{movie?.characters}
+        </h1>{" "}
+        <div className="border my-4 w-full"></div>
       </div>
-      <div className="grid grid-cols-5 gap-12 mt-6 mb-30">
+
+      <div className="flex justify-between p-8">
+        <h1 className="text-5xl">More like this</h1>
+        <button className="text-2xl">See More</button>
+      </div>
+      <div className="grid grid-cols-5 gap-10 mt-6 mb-30">
         {similar?.slice(0, 5).map((amka) => {
           return (
             <div
               key={amka.id}
               className="flex flex-col overflow-hidden rounded-lg shadow-sm">
               <img
-                className="w-full h-140 object-cover"
+                className="w-full h-150  object-cover"
                 src={`https://image.tmdb.org/t/p/w500${amka?.poster_path}`}
                 alt={amka?.original_title || "poster"}
               />
-              <div className="bg-gray-100 p-4 flex-1 flex flex-col justify-between">
+              <div className="bg-gray-500 p-4 flex-1 flex flex-col justify-between">
                 <div className="flex items-center gap-1">
-                  <img src="star.svg" alt="od" className="w-5 h-5" />
-                  <p className="text-lg font-semibold">
+                  <img src="/star.svg" alt="od" className="w-7 h-7" />
+                  <p className="font-bold text-3xl ">
                     {amka?.vote_average ? amka.vote_average.toFixed(1) : "N/A"}
                     /10
                   </p>
@@ -112,3 +131,4 @@ export const page = ({ rating, title }) => {
   );
 };
 export default page;
+``;

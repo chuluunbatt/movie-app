@@ -10,11 +10,11 @@ export const MovieCard = ({ imgSrc, title, rating, id }) => {
       className="mt-8  gap-10   ">
       <div>
         <img
-          className="w-105 h-160   "
+          className="w-100 h-160 rounded-t-2xl     "
           src={`https://image.tmdb.org/t/p/original${imgSrc}`}
           alt="poster"
         />
-        <div className=" bg-gray-100 w-105  text-3xl pb-25">
+        <div className=" bg-gray-400 w-100 rounded-b-2xl  text-3xl pb-25">
           <div className="flex  ">
             <img src="star.svg" alt="od" className="size-7" />
 
